@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   
   def show
   	@user = User.find(params[:id])
-    @messages = @user.messages.paginate(page: params[:page])
+    @messages = Message.where(recipient_id: @user.id).paginate(page: params[:page])
     @message = current_user.messages.build if logged_in?
   end
 

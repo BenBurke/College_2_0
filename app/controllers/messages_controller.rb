@@ -6,8 +6,9 @@ class MessagesController < ApplicationController
   def create
   	@message = current_user.messages.build(message_params)
   	if @message.save
+      @user = User.find(@message.recipient_id)
   		flash[:success] = "Message Delivered!"
-  		redirect_to root_url
+  		redirect_to @user
   	else
   		@mail_box_messages = []
   		render 'static_pages/home'
@@ -23,7 +24,7 @@ class MessagesController < ApplicationController
   private
 
   	def message_params
-      params.require(:message).permit(:content, :picture)
+      params.require(:message).permit(:content, :picture, :recipient_id
     end
 
     def correct_user
