@@ -9,8 +9,11 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label "Current College Email" %>
       <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label "Permanent Email" %>
+      <%= f.email_field :account_email, class: 'form-control' %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
