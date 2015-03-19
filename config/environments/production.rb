@@ -1,4 +1,6 @@
 Rails.application.configure do
+  config.s3_access_key_id     = ENV['AKIAJFSOWJNAFUX3PTJA']
+  config.s3_secret_access_key = ENV['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']
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
