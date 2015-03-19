@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   
   def show
   	@user = User.find(params[:id])
+    @messages = @user.messages.paginate(page: params[:page])
+    @message = current_user.messages.build if logged_in?
   end
 
   def new
@@ -52,14 +54,6 @@ class UsersController < ApplicationController
 	  def user_params
 	  	params.require(:user).permit(:name, :email, :account_email, :password, :password_confirmation)
 	  end
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in"
-        redirect_to login_url
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

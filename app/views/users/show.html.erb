@@ -8,4 +8,18 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+   <% if logged_in? %>
+    <section class="message_form">
+        <%= render 'shared/message_form' %>
+    </section>
+    <% end %>
+    <% if @user.messages.any? #&& @user = current_user %>
+      <h3>Messages (<%= @user.messages.count %>)</h3>
+      <ol class="messages">
+        <%= render @messages %>
+      </ol>
+      <%= will_paginate @messages %>
+    <% end %>
+  </div>
 </div>

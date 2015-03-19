@@ -1,0 +1,6 @@
+<% if @mail_box_messages.any? %>
+  <ol class="messages">
+    <%= render @mail_box_messages %>
+  </ol>
+  <%= will_paginate @mail_box_messages %>
+<% end %>
